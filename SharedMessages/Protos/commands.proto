@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "SharedMessages";
+
+package commands;
+
+service DroneCommands {
+  rpc UpdatePosition (UpdatePositionCommand) returns (UpdatePositionResponse);
+}
+
+message UpdatePositionCommand {
+  double Latitude = 1;
+  double Longitude = 2;
+}
+
+message UpdatePositionResponse {
+  bool Succeeded = 1;
+}

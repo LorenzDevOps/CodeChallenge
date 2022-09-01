@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "SharedMessages";
+
+package telemetry;
+
+service DroneTelemetry {
+  rpc PositionUpdated (PositionUpdatedCommand) returns (PositionUpdatedResponse);
+  rpc BatteryLevelUpdated (BatteryLevelUpdatedCommand) returns (BatteryLevelUpdatedResponse);
+}
+
+message PositionUpdatedCommand {
+  int32 DroneId = 1;
+  double Latitude = 2;
+  double Longitude = 3;
+}
+
+message PositionUpdatedResponse {
+  bool Succeeded = 1;
+}
+
+message BatteryLevelUpdatedCommand {
+  int32 DroneId = 1;
+  double BatteryLevel = 2;
+}
+
+message BatteryLevelUpdatedResponse {
+  bool Succeeded = 1;
+}

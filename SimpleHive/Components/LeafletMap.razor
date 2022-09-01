@@ -1,0 +1,15 @@
+﻿
+<div id="@mapId" style="height: 1000px;"></div>
+
+@code {
+    private string mapId = "leafletMap";
+
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await JSRuntime.InvokeVoidAsync("window.leafletMap.create", mapId);
+    }
+}
